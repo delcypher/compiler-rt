@@ -18,6 +18,16 @@
 #include "tsan_platform.h"
 
 #include <unistd.h>
+// EVIL hack
+namespace std {
+struct __float128 {
+  double d;
+  __float128(double d) : d(d) {}
+  __float128() : d(0.0) {}
+  int operator<(const int &rhs) const { return d < rhs; }
+  __float128 operator-() const { return __float128(-d); }
+};
+}
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>

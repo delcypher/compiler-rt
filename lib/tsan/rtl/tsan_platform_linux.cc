@@ -28,7 +28,7 @@
 #include <pthread.h>
 #include <signal.h>
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
 #include <sys/mman.h>
@@ -43,7 +43,8 @@
 #include <sched.h>
 #include <dlfcn.h>
 #define __need_res_state
-#include <resolv.h>
+//#include <resolv.h>
+#include "bits/types/res_state.h"
 #include <malloc.h>
 
 #ifdef sa_handler

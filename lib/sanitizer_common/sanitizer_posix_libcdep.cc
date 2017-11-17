@@ -20,6 +20,16 @@
 
 #include <errno.h>
 #include <pthread.h>
+// EVIL hack
+namespace std {
+struct __float128 {
+  double d;
+  __float128(double d) : d(d) {}
+  __float128() : d(0.0) {}
+  int operator<(const int &rhs) const { return d < rhs; }
+  __float128 operator-() const { return __float128(-d); }
+};
+} // namespace std
 #include <stdlib.h>
 #include <sys/mman.h>
 #include <sys/resource.h>
